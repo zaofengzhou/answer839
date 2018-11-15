@@ -31,15 +31,16 @@ int cmp(const void* a, const void* b) {
         return m.x1 - n.x1;
 }
 
+/*
 int main()
 {
     FILE *fp, *fout;
-    int i = 0, N;
+    int i = 0, N = 0;
     Point a[MAXN];
 
-    fp = fopen("data.in", "r");
-    while(fscanf(fp, "%f", &a[i].x1)) {
-        fscanf(fp, "%f%f%f", &a[i].y1, &a[i].x2, &a[i].y2);
+    fp = fopen("E:\\data.in", "r");
+    while(fscanf(fp, "%lf", &a[i].x1) != EOF) {
+        fscanf(fp, "%lf%lf%lf", &a[i].y1, &a[i].x2, &a[i].y2);
         a[i].area = (a[i].y2-a[i].y1)*(a[i].x2-a[i].x1);
         a[i].distance = a[i].x1*a[i].x1+a[i].y1*a[i].y1;
         i++;
@@ -49,11 +50,13 @@ int main()
     N = i;
     qsort(a, N, sizeof(Point), cmp);
 
-    fout = fopen("data.out", "w");
+    fout = fopen("E:\\data.out", "w");
     for(i = 0; i < N; i++) {
         fprintf(fout, "%f %f %f %f\n", a[i].x1, a[i].y1, a[i].y1, a[i].y2);
     }
     fclose(fout);
+
     return 0;
 }
+*/
 
