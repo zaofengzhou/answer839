@@ -23,34 +23,63 @@ struct node* newNode(int data) {
     return node;
 }
 
-void preTraverse(struct node* root) {
+void preOrder(struct node* root) {
     if(root != NULL) {
         printf("%d ", root->data);
-        preTraverse(root->left);
-        preTraverse(root->right);
+        preOrder(root->left);
+        preOrder(root->right);
     }
 }
 
-/*int main()
+void inOrder(struct node* root) {
+    if(root != NULL) {
+        inOrder(root->left);
+        printf("%d ", root->data);
+        inOrder(root->right);
+    }
+}
+
+void postOrder(struct node* root) {
+    if(root != NULL) {
+        postOrder(root->left);
+        postOrder(root->right);
+        printf("%d ", root->data);
+    }
+}
+
+void levelOrder(node* root) {
+    if(root == NULL)    return;
+    queue<node*> q;
+    q.push(root);
+    while(q.empty() == false) {
+        struct node* now = q.front();   //取出队首元素
+        printf("%d ", now->data);   //访问队首元素
+        q.pop();
+        if(root->left != NULL)  q.push(root->left);
+        if(root->right != NULL) q.push(root->right);
+    }
+}
+
+int main()
 {
-    *//*create root*//*
+    /*create root*/
     struct node* root = newNode(1);
-    *//* following is the tree after above statement
+    /* following is the tree after above statement
           1
         /   \
        NULL  NULL
-    *//*
+    */
     root->left = newNode(2);
     root->right = newNode(3);
-    *//* 2 and 3 become left and right children of 1
+    /* 2 and 3 become left and right children of 1
              1
            /   \
           2      3
        /    \    /  \
       NULL NULL NULL NULL
-    *//*
+    */
     root->left->left  = newNode(4);
-    *//* 4 becomes left child of 2
+    /* 4 becomes left child of 2
                  1
              /       \
             2          3
@@ -58,7 +87,13 @@ void preTraverse(struct node* root) {
          4    NULL  NULL  NULL
         /  \
       NULL NULL
-    *//*
-    preTraverse(root);
+    */
+//    preOrder(root);
+//    printf("\n");
+//    inOrder(root);
+//    printf("\n");
+//    postOrder(root);
+//    printf("\n");
+    levelOrder(root);
     return 0;
-}*/
+}

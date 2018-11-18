@@ -92,6 +92,7 @@ void Queue::displayQueue()
 }
 
 /* Driver of the program */
+/*
 int main()
 {
     Queue q(5);
@@ -120,3 +121,4 @@ int main()
     q.enQueue(20);
     return 0;
 }
+*/
