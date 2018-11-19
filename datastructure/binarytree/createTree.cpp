@@ -87,7 +87,7 @@ void printGivenLevel(struct node* root, int level) {
 }
 
 /*
-   //Function to print level order traversal of tree
+    //Function to print level order traversal of tree
     printLevelorder(tree)
         for d = 1 to height(tree)
             printGivenLevel(tree, d);
@@ -173,8 +173,8 @@ void iterativePostorder(struct node* root) {
 
     while (!s1.empty()) {
         node *curr = s1.top();
-        s1.pop();
         s2.push(curr);
+        s1.pop();
         if(curr->left)
             s1.push(curr->left);
         if(curr->right)
@@ -183,8 +183,8 @@ void iterativePostorder(struct node* root) {
     // Print all elements of second stack
     while (!s2.empty()) {
         node* temp = s2.top();
+        printf("%d ", temp->data);
         s2.pop();
-        cout << temp->data + " ";
     }
 }
 
@@ -223,7 +223,7 @@ int main()
 //    printf("\n");
 //    postOrder(root);
 //    printf("\n");
-    cout << height(root) << endl;
+//    cout << height(root) << endl;
 //    printGivenLevel(root, 3);
     printLevelOrder(root);
     printf("\n");
