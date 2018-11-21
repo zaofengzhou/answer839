@@ -163,7 +163,17 @@ void iterativePreorder(struct node* root) {
     }
 }
 
-// NLR  LRN
+//LRN的逆序NRL
+/*
+1. Push root to first stack.
+2. Loop while first stack is not empty
+   2.1 Pop a node from first stack and push it to second stack
+   2.2 Push left and right children of the popped node to first stack
+3. Print contents of second stack
+ */
+//Iterative preorder traversal can be easily implemented using two stacks.
+// The first stack is used to get the reverse postorder traversal.
+// The steps to get a reverse postorder are similar to iterative preorder.
 void iterativePostorder(struct node* root) {
     if(root == NULL)
         return;
@@ -188,6 +198,74 @@ void iterativePostorder(struct node* root) {
     }
 }
 
+/*
+1.1 Create an empty stack
+2.1 Do following while root is not NULL
+    a) Push root's right child and then root to stack.
+    b) Set root as root's left child.
+2.2 Pop an item from stack and set it as root.
+    a) If the popped item has a right child and the right child
+       is at top of stack, then remove the right child from stack,
+       push the root back and set root as root's right child.
+    b) Else print root's data and set root as NULL.
+2.3 Repeat steps 2.1 and 2.2 while stack is not empty.
+*/
+void iterativePostorder1(struct node* root) {
+    if(root == NULL)
+        return;
+    stack<node*> s;
+    do {
+        // Move to leftmost node
+        while(root) {
+            // Push root'right child and then root to stack
+            if(root->right)
+                s.push(root->right);
+            s.push(root);
+            // Set root as root's left child
+            root = root->left;
+        }
+        // Pop an item from stack and set it as root
+        root = s.top();
+        s.pop();
+        // If the popped item has a right child and the right child is not
+        // processed yet, then make sure right child is processed before root
+        if(root->right && !s.empty() && s.top() == root->right) {
+            s.pop();    //remove right child from stack
+            s.push(root);   //push root back to stack
+            root = root->right; // change root so that the right
+                                // child is processed next
+        } else {    // Else print root's data and set root as NULL
+            printf("%d ", root->data);
+            root = NULL;
+        }
+    }while(!s.empty());
+
+}
+
+//Push directly root node two times while traversing to the left.
+// While poping if you find stack top() is same as root then go for root->right else print root
+void iterativePostorder2(struct node* root) {
+    stack<node*> s;
+    while(true) {
+        while(root != NULL) {
+            s.push(root);
+            s.push(root);
+            root = root->left;
+        }
+        // check for empty stack
+        if(s.empty())   return;
+        root = s.top();
+        s.pop();
+
+        if(!s.empty() && s.top() == root)   root = root->right;
+        else {
+            printf("%d ", root->data);
+            root = NULL;
+        }
+    }
+}
+
+
 int main()
 {
     /*create root*/
@@ -209,13 +287,13 @@ int main()
     root->left->left  = newNode(4);
     root->left->right  = newNode(5);
     /* 4 becomes left child of 2
-                   1
-              /          \
-             2            3
-           /    \        /  \
-          4       5    NULL  NULL
-        /  \     /   \
-     NULL NULL NULL  NULL
+                     1
+                /         \
+              2            3
+            /    \        /  \
+           4       5    NULL  NULL
+         /  \     /  \
+     NULL  NULL NULL  NULL
     */
 //    preOrder(root);
 //    printf("\n");
@@ -233,5 +311,9 @@ int main()
     inOrder1(root);
     printf("\n");
     iterativePostorder(root);
+    printf("\n");
+    iterativePostorder1(root);
+    printf("\n");
+    iterativePostorder2(root);
     return 0;
 }
