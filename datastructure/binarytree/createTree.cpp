@@ -118,7 +118,7 @@ void printLevelOrder(struct node* root) {
      c) Go to step 3.
     5) If current is NULL and stack is empty then we are done.
  */
-void inOrder1(struct node* root) {
+void iterativeInOrder(struct node* root) {
     stack<struct node*> s;
     struct node* curr = root;
 
@@ -130,9 +130,8 @@ void inOrder1(struct node* root) {
         }
         // Current must be NULL at this point
         curr = s.top();
-        s.pop();
-
         cout << curr->data << " ";
+        s.pop();
         // we have visited the node and its left subtree.  Now, it's right subtree's turn
         curr = curr->right;
     }
@@ -266,54 +265,54 @@ void iterativePostorder2(struct node* root) {
 }
 
 
-int main()
-{
-    /*create root*/
-    struct node* root = newNode(1);
-    /* following is the tree after above statement
-          1
-        /   \
-       NULL  NULL
-    */
-    root->left = newNode(2);
-    root->right = newNode(3);
-    /* 2 and 3 become left and right children of 1
-             1
-           /   \
-          2      3
-       /    \    /  \
-      NULL NULL NULL NULL
-    */
-    root->left->left  = newNode(4);
-    root->left->right  = newNode(5);
-    /* 4 becomes left child of 2
-                     1
-                /         \
-              2            3
-            /    \        /  \
-           4       5    NULL  NULL
-         /  \     /  \
-     NULL  NULL NULL  NULL
-    */
-//    preOrder(root);
+//int main()
+//{
+//    /*create root*/
+//    struct node* root = newNode(1);
+//    /* following is the tree after above statement
+//          1
+//        /   \
+//       NULL  NULL
+//    */
+//    root->left = newNode(2);
+//    root->right = newNode(3);
+//    /* 2 and 3 become left and right children of 1
+//             1
+//           /   \
+//          2      3
+//       /    \    /  \
+//      NULL NULL NULL NULL
+//    */
+//    root->left->left  = newNode(4);
+//    root->left->right  = newNode(5);
+//    /* 4 becomes left child of 2
+//                     1
+//                /         \
+//              2            3
+//            /    \        /  \
+//           4       5    NULL  NULL
+//         /  \     /  \
+//     NULL  NULL NULL  NULL
+//    */
+////    preOrder(root);
+////    printf("\n");
+////    inOrder(root);
+////    printf("\n");
+////    postOrder(root);
+////    printf("\n");
+////    cout << height(root) << endl;
+////    printGivenLevel(root, 3);
+//    printLevelOrder(root);
 //    printf("\n");
-//    inOrder(root);
+////    levelOrder(root);
+//    iterativePreorder(root);
 //    printf("\n");
-//    postOrder(root);
+//    iterativeInOrder(root);
 //    printf("\n");
-//    cout << height(root) << endl;
-//    printGivenLevel(root, 3);
-    printLevelOrder(root);
-    printf("\n");
-//    levelOrder(root);
-    iterativePreorder(root);
-    printf("\n");
-    inOrder1(root);
-    printf("\n");
-    iterativePostorder(root);
-    printf("\n");
-    iterativePostorder1(root);
-    printf("\n");
-    iterativePostorder2(root);
-    return 0;
-}
+//    iterativePostorder(root);
+//    printf("\n");
+//    iterativePostorder1(root);
+//    printf("\n");
+//    iterativePostorder2(root);
+//    return 0;
+//}
