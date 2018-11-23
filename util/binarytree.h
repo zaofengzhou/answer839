@@ -15,7 +15,13 @@ struct node
 };
 
 struct node* newNode(int data);
+
+unsigned int countNodes(struct node* root);
+
 void preOrder(struct node* root);
+
 void inOrder(struct node* root);
+
 void postOrder(struct node* root);
+
 void levelOrder(node* root);

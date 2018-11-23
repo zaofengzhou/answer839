@@ -18,6 +18,14 @@ struct node* newNode(int data) {
     node->right = NULL;
     return node;
 }
+
+// This function counts the number of nodes in a binary tree
+unsigned int countNodes(struct node* root) {
+    if(root == NULL)
+        return 0;
+    return 1 + countNodes(root->left)+countNodes(root->right);
+}
+
 void preOrder(struct node* root) {
     if(root == NULL)
         return;

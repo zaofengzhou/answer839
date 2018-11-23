@@ -48,13 +48,8 @@ bool isMinHeap(int level[], int n)
     return true;
 }
 
+//链式存储
 bool isMinHeap1(node* root) {
-//    bool left = true, right=true;
-//    if(root->left!=NULL && root->left->data > root->data)
-//        left = false;
-//    else if(root->right!=NULL && root->right->data > root->data)
-//        right = false;
-//    return isMinHeap1(root->left) && isMinHeap1(root->right);
     if(root->left == NULL && root->right == NULL)
         return true;
     if (root->right == NULL)
@@ -70,7 +65,37 @@ bool isMinHeap1(node* root) {
     }
 }
 
-bool isMaxHeap(node* root) {
+/*
+ * Given a binary tree we need to check it has heap property or not,
+ * Binary tree need to fulfill following two conditions for being a heap –
+ *  It should be a complete tree (i.e. all levels except last should be full).
+ *  Every node’s value should be greater than or equal to its child node (considering max-heap).
+ */
+
+// This function checks if the binary tree is complete or not
+bool isCompleteUtil(struct node* root, unsigned int index, unsigned int number_nodes)
+{
+    // An empty tree is complete
+    if(root == NULL)
+        return true;
+    // If index assigned to current node is more than
+    // number of nodes in tree, then tree is not complete
+    if(index >= number_nodes)
+        return false;
+    // Recur for left and right subtrees
+    return isCompleteUtil(root->left, 2*index+1, number_nodes) &&
+            isCompleteUtil(root->right, 2*index+2, number_nodes);
+}
+
+/*
+ * isHeapUtil function is written considering following thing
+ *  1.Every Node can have 2 children, 0 child(last level nodes)or 1 child(there can be at most one such node)
+ *  2.if Node has No child then it's a leaf node and return true(Base case)
+ *  3.if Node has one child(it must be left child because it is complete tree),hen we need to compare this node with its single child only.
+ *  4.if Node has both child then check heap property at Node at recur for both subtrees.
+ */
+// This Function checks the heap property in the tree.
+bool isHeapUtil(node* root) {
     //  Base case : single node satisfies property
     if(root->left == NULL && root->right == NULL)
         return true;
@@ -85,12 +110,23 @@ bool isMaxHeap(node* root) {
         //  Check heap property at Node and
         //  Recursive check heap property at left and right subtree
         if(root->data >= root->left->data && root->data >= root->right->data)
-            return isMaxHeap(root->left) && isMaxHeap(root->right);
+            return isHeapUtil(root->left) && isHeapUtil(root->right);
         else
             return false;
     }
 }
 
+// Function to check binary tree is a Heap or not
+bool isHeap(struct node* root)
+{
+    unsigned int node_count = countNodes(root);
+    unsigned int index = 0;
+
+    if(isCompleteUtil(root, index, node_count) && isHeapUtil(root))
+        return true;
+    return false;
+}
+/*
 int main()
 {
     int level[] = {10, 15, 14, 25, 30};
@@ -109,6 +145,7 @@ int main()
     root->right = newNode(14);
     root->left->left = newNode(25);
     root->left->right = newNode(30);
+//    root->left->left->right = newNode(40);
 
     struct node* root1 = newNode(10);
     root1->left = newNode(9);
@@ -121,8 +158,15 @@ int main()
     root1->left->left->right = newNode(2);
     root1->left->right->left = newNode(1);
 //    levelOrder(root);
-    cout << isMinHeap1(root) << endl;
-    cout << isMaxHeap(root1) << endl;
+//    cout << countNodes(root) << endl;
+    unsigned int node_count = countNodes(root);
+    cout << isCompleteUtil(root, 0, node_count) << endl;
+//    cout << isMinHeap1(root) << endl;
+//    cout << isHeapUtil(root1) << endl;
+    if(isHeap(root1))
+        cout << "Given binary tree is a Heap" << endl;
+    else
+        cout << "Given binary tree is not a Heap" << endl;
     return 0;
 }
-
+*/
