@@ -4,6 +4,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+#include "../util/array.h"
 /*
  * 设计并定义一个排序函数sort(算法自定)对一个数组排序，
  * 要求数组元素个数，数组中元素的类型和排序标准都要有函数参数来指定.
@@ -21,15 +22,6 @@ void printd(int n)
         printd(n / 10);
     putchar(n % 10 + '0');
 }
-
-void printArray(int a[], int n)
-{
-    for (int i = 0; i < n; ++i) {
-        cout << a[i] << " ";
-    }
-    cout << endl;
-}
-
 
 int cmp2(const void* a, const void* b)
 {

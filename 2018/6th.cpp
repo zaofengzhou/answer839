@@ -35,10 +35,11 @@ void classify(int *a, int n)
     }
 }
 
+/*
 int main()
 {
     int a[] = {1, 2, 3, 4, 5, 6};
     printA(a, sizeof(a)/sizeof(a[0]));
     classify(a, 6);
     printA(a, 6);
-}
+}*/

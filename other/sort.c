@@ -1,7 +1,7 @@
 //
 // Created by zfzhou on 11/13/2018.
 //
-/**
+/*
  * void qsort(void *base, size_t nitems, size_t size, int (*compar)(const void *, const void*))
  * base -- 指向要排序的数组的第一个元素的指针。
  * nitems -- 由 base 指向的数组中元素的个数。
@@ -11,6 +11,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include "../util/array.h"
 
 int values[] = { 88, 56, 100, 2, 25 };
 
