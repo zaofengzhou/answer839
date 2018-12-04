@@ -5,8 +5,6 @@
 #ifndef ANSWER839_BINARYTREE_H
 #define ANSWER839_BINARYTREE_H
 
-#endif //ANSWER839_BINARYTREE_H
-
 struct node
 {
     int data;
@@ -25,3 +23,6 @@ void inOrder(struct node* root);
 void postOrder(struct node* root);
 
 void levelOrder(node* root);
+
+
+#endif //ANSWER839_BINARYTREE_H
