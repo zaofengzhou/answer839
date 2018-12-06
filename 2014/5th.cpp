@@ -42,23 +42,26 @@ int cmp14(const void *a, const void *b) {
 }
 
 
+/*
 //int main(int argc, char *argv[])
 int main()
 {
     FILE *fin, *fout;
 //    int n = atoi(argv[1]);
-    int n = 3;
+    int n = 4;
     lineNode line[n];
 
     fin = fopen("../2014/data.in", "r");
-
+    fout = fopen("../2014/data.out", "w");
 
     char str[MAXLENGTH+1];
     int i = 0;
 
-    while(fscanf(fin, "%s", str) != EOF) {
+    while(fscanf(fin, "%s", str) != EOF)
+    {
         line[i].hashValue = hash(str);
         line[i].len = strlen(str);
+        // 给结构体里的字符串分配内存空间
         line[i].str = (char*)malloc(sizeof(char)*(line[i].len+1));
         strcpy(line[i].str, str);
         i++;
@@ -66,7 +69,7 @@ int main()
 
     qsort(line, n, sizeof(line[0]), cmp14);
 
-    fout = fopen("../2014/data.out", "w");
+
     for(int i = 0; i < n; i++)
     {
         fprintf(fout, "%s\n", line[i].str);
@@ -74,3 +77,4 @@ int main()
 
     return 0;
 }
+*/
