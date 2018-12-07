@@ -36,6 +36,7 @@ void *bsearch1(void* key,void* base,size_t num,size_t width,
     return NULL;
 }
 
+/*
 int main()
 {
     int *pItem;
@@ -50,3 +51,4 @@ int main()
     cout << *pItem<< endl;
     return 0;
 }
+*/
