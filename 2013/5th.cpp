@@ -32,6 +32,7 @@ int check(int t, char c)
     return  s[t] == c;
 }
 
+/*
 int main()
 {
     char idNum[20];
@@ -49,3 +50,4 @@ int main()
     }
     return 0;
 }
+*/
