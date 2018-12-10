@@ -9,5 +9,8 @@ void printArray(int a[], int n);
 
 void swap(int a[], int i, int j);
 
+void insertSort(int a[], int n);
+
+void mergeSort(int a[], int l, int r);
 
 #endif //ANSWER839_ARRAY_H
