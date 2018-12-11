@@ -29,10 +29,12 @@ int htoi(char *s)
    return sum;
 }
 
+/*
 int main()
 {
     cout << htoi("11") << endl;
     cout << htoi("0xa") << endl;
     return 0;
 }
+*/
 

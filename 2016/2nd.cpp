@@ -7,7 +7,7 @@ using namespace std;
 int bitsSwapRequired(int x, int y)
 {
     int a = x, b = y;
-    unsigned mask = 1;
+    unsigned mask = 1;  //屏蔽码
     int count = 0;
 
     for(int i = 0; i < 32; i++) {
