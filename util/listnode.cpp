@@ -13,3 +13,10 @@ void printList(ListNode* head) {
     }
     cout << endl;
 }
+
+NODE* newNode(char *s) {
+    NODE* newNode = (NODE*)malloc(sizeof(NODE));
+    newNode->data = s;
+    newNode->next = NULL;
+    return newNode;
+}

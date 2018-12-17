@@ -4,6 +4,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include "../util/listnode.h"
 
 /*
  * 定义函数sortLinkedList(h)，其将h所指的一个单项链表按照节点中存放的字符串值的字典升序排序，返回指向排序后的第一个节点的指针。不能使用临时的结点缓冲区。
@@ -12,18 +13,6 @@
    其中data指向不等长的字符数组表示的字符串。
  */
 
-typedef struct Node {
-    char* data;
-    struct Node *next;
-}NODE;
-
-
-NODE* newNode(char *s) {
-    NODE* newNode = (NODE*)malloc(sizeof(NODE));
-    newNode->data = s;
-    newNode->next = NULL;
-    return newNode;
-}
 
 void print(NODE *head)
 {

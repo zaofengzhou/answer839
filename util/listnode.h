@@ -13,7 +13,13 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {}
 };
 
+typedef struct Node {
+    char* data;
+    struct Node *next;
+}NODE;
+
 void printList(ListNode* head);
 
+NODE* newNode(char *s);
 
 #endif //ANSWER839_LISTNODE_H
