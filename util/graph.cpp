@@ -76,13 +76,13 @@ void Graph::DFSUtil(int v, bool visited[]) {
 void Graph::DFS(int v)
 {
     // Mark all the vertices as not visted
-    bool *visted = new bool[V];
+    bool *visited = new bool[V];
     for(int i = 0; i < V; i++)
-        visted[i] = false;
+        visited[i] = false;
 
     // Call the recursive helper function
     // to print DFS traversal
-    DFSUtil(v, visted);
+    DFSUtil(v, visited);
 }
 
 // Driver code
@@ -114,4 +114,5 @@ int main()
 
     return 0;
 }
+*/
 */
