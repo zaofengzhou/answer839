@@ -4,6 +4,11 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
+ * 函数Insert将一个由参数p指向的结点按序插入到一个已按data成员升序排序
+ * 的头指针为head的链表中，返回插入结点后的链表表头指针。
+ */
+
 typedef struct intNode {
     int data;
     struct intNode *next;
@@ -33,6 +38,7 @@ NODE* Insert(NODE* head, NODE* p)
     dummy->next = head;
 
     NODE* pre = dummy;
+    // 找到待插入结点的前驱
     while(pre->next != NULL && pre->next->data < p->data) {
         pre = pre->next;
     }
@@ -42,13 +48,14 @@ NODE* Insert(NODE* head, NODE* p)
     return dummy->next;
 }
 
+/*
 int main()
 {
 
-//    NODE* head = newNode1(1);
-//    head->next = newNode1(2);
-//    head->next->next = newNode1(4);
-    NODE* head = NULL;
+    NODE* head = newNode1(1);
+    head->next = newNode1(2);
+    head->next->next = newNode1(4);
+//    NODE* head = NULL;
 
     print(head);
     NODE* p = newNode1(3);
@@ -58,6 +65,7 @@ int main()
     cout << "hello world!" << endl;
     return 0;
 }
+*/
 
 
 
