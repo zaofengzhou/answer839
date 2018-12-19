@@ -36,8 +36,15 @@ long long C1(int n, int k)
 }
 
 
+/*
 int main()
 {
+//    int *a = (int*)malloc(4*10);
+//    memset(a, 0, 10*4);
+//    for(int i = 0; i < 10; i++) {
+//        cout << a[i] << " ";
+//    }
     printf("%lld\n", C1(50, 25));
     return 0;
 }
+*/
