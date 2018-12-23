@@ -54,18 +54,20 @@ void DFSUtil1(int v, bool visited[]) {
     }
 }
 
+//检查图是否连通
 bool check(int v) {
     bool visited[n] = {false};
 
     DFSUtil1(v, visited);
 
-    for(int i = 0; i < n; i++) {    //检查是否每个结点都遍历到
+    for(int i = 0; i < n; i++) {    //DFS完检查是否每个结点都遍历到
         if(!visited[i])
             return false;
     }
     return true;
 }
 
+/*
 int main()
 {
     DFS(0);
@@ -77,5 +79,6 @@ int main()
         printf("The graph is unconnected!\n");
     }
 }
+*/
 
 
