@@ -14,7 +14,7 @@ using namespace std;
  * ~(~0 << n) << p+1-n  从第p位开始n个为1，其余各位为0
  */
 unsigned invert(unsigned x, int p, int n) {
-    return x ^ (~(~0 << n) << (p+1-n));
+    return x ^ ( ~(~0 << n) << (p+1-n) );
 }
 
 /*

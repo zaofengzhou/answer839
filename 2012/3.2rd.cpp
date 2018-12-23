@@ -33,8 +33,9 @@ void PRINT(char fmt[], unsigned value)
             putchar(fmt[i]);
             continue;
         } else {    //c=='%'判断c的下一个字符，并输出value的相应形式
-            c = fmt[i+1];
-            i++;
+            c = fmt[++i];
+//            c = fmt[i+1];
+//            i++;
         }
         switch (c) {
             case 'b':
@@ -50,7 +51,7 @@ void PRINT(char fmt[], unsigned value)
                 printf("%o", value);
                 break;
             default:
-                printf("%c", fmt[i+1]);
+                printf("%c", c);
                 break;
         }
     }
@@ -59,11 +60,12 @@ void PRINT(char fmt[], unsigned value)
 /*
 int main()
 {
-    PRINT("hello%b\nworld", -1);
+    //PRINT("hello%b\nworld", -1);
+    PRINT("二进制：%b\n", 12);
     //printBinary(-1);
     //printf("\n");
     //printHex(-1);
     return 0;
 }
- */
+*/
 

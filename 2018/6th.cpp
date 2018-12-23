@@ -16,7 +16,7 @@ void printA(int a[], int n)
 
 //two pointer TimeComplexity O(n)
 /*
- * 类似快排，使用两根指针l, r同时从左右两边遍历，当左边读到偶数，右边躲到奇数时，
+ * 类似快排，使用两根指针l, r同时从左右两边遍历，当左边读到偶数，右边读到奇数时，
  * 交换着两个数的值，直到l = r。
  */
 void classify(int *a, int n)

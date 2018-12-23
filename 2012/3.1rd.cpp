@@ -37,12 +37,12 @@ NODE* Insert(NODE* head, NODE* p)
     NODE* dummy = newNode1(0);
     dummy->next = head;
 
-    NODE* pre = dummy;
     // 找到待插入结点的前驱
+    NODE* pre = dummy;
     while(pre->next != NULL && pre->next->data < p->data) {
         pre = pre->next;
     }
-    p->next = pre->next;
+    p->next = pre->next;    //插入p
     pre->next = p;
 
     return dummy->next;
