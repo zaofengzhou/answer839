@@ -24,5 +24,6 @@ void postOrder(struct node* root);
 
 void levelOrder(node* root);
 
+void postOrderIterative(struct node* root);
 
 #endif //ANSWER839_BINARYTREE_H

@@ -50,7 +50,8 @@ int main()
     levelOrder(root);
     printf("\n");
     cout << findX(root, 4) << endl;
-    printAnsectors(root, 7);
+    //printAnsectors(root, 7);
     return 0;
 }
 */
+

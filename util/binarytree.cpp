@@ -50,6 +50,30 @@ void postOrder(struct node* root) {
     printf("%d ", root->data);
 }
 
+void postOrderIterative(struct node* root) {
+    stack<node* > s;
+    node* cur = root;
+    node* last = NULL;
+
+    while(cur || !s.empty()) {
+        if(cur) {
+            s.push(cur);
+            cur = cur->left;
+        } else {
+            node* top = s.top();
+            // if right child exists and traversing node
+            // from left child, then move right
+            if(top->right && last != top->right) {
+                cur = top->right;
+            } else {
+                cout << top->data << " ";
+                last = top;
+                s.pop();
+            }
+        }
+    }
+}
+
 void levelOrder(node* root) {
     if(root == NULL)    return;
     queue<node*> q;
@@ -64,4 +88,18 @@ void levelOrder(node* root) {
     }
 }
 
+int main()
+{
+    node *root = newNode(1);
+    root->left = newNode(2);
+    root->right = newNode(3);
+    root->left->left = newNode(4);
+    root->left->right = newNode(5);
+    levelOrder(root);
+    printf("\n");
+    postOrder(root);
+    printf("\n");
+    postOrderIterative(root);
+    return 0;
+}
 
