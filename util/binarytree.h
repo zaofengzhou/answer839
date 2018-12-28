@@ -24,6 +24,10 @@ void postOrder(struct node* root);
 
 void levelOrder(node* root);
 
-void postOrderIterative(struct node* root);
+void iterativePreOrder(struct node* root);
+
+void iterativeInOrder(struct node* root);
+
+void iterativePostOrder(struct node* root);
 
 #endif //ANSWER839_BINARYTREE_H

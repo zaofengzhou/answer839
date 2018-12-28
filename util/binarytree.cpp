@@ -34,12 +34,48 @@ void preOrder(struct node* root) {
     preOrder(root->right);
 }
 
+void iterativePreOrder(struct node* root) {
+    if(root == NULL)
+        return;
+    stack<node* > s;
+    s.push(root);
+    while(!s.empty()) {
+        // 栈顶元素出栈
+        node* cur = s.top();
+        printf("%d ", cur->data);
+        s.pop();
+        // right child is pushed first so that left is
+        // processed first
+        if(cur->right != NULL)
+            s.push(cur->right);
+        if(cur->left != NULL)
+            s.push(cur->left);
+    }
+}
+
 void inOrder(struct node* root) {
     if(root != NULL)
         return;
     inOrder(root->left);
     printf("%d ", root->data);
     inOrder(root->right);
+}
+
+void iterativeInOrder(struct node* root) {
+    stack<node* > s;
+    node* cur = root;
+    while(cur != NULL || !s.empty()) {
+        if(cur != NULL) {
+            s.push(cur);
+            cur = cur->left;
+        } else {
+            // cur must be NULL at this time
+            cur = s.top();
+            printf("%d ", cur->data);
+            s.pop();
+            cur = cur->right;
+        }
+    }
 }
 
 void postOrder(struct node* root) {
@@ -50,10 +86,10 @@ void postOrder(struct node* root) {
     printf("%d ", root->data);
 }
 
-void postOrderIterative(struct node* root) {
+void iterativePostOrder(struct node* root) {
     stack<node* > s;
     node* cur = root;
-    node* last = NULL;
+    node* last = NULL;  //最近访问结点
 
     while(cur || !s.empty()) {
         if(cur) {
@@ -80,7 +116,7 @@ void levelOrder(node* root) {
     q.push(root);
 
     while(!q.empty()) {
-        struct node* now = q.front();   //取出队首元素
+        node* now = q.front();   //取出队首元素
         printf("%d ", now->data);   //访问队首元素
         q.pop();
         if(now->left != NULL)  q.push(now->left);   //左子树非空，入队
@@ -97,9 +133,13 @@ int main()
     root->left->right = newNode(5);
     levelOrder(root);
     printf("\n");
+    iterativePreOrder(root);
+    printf("\n");
+    iterativeInOrder(root);
+    printf("\n");
     postOrder(root);
     printf("\n");
-    postOrderIterative(root);
+    iterativePostOrder(root);
     return 0;
 }
 

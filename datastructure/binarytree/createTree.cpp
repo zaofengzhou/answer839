@@ -63,7 +63,7 @@ void printLevelOrder(struct node* root) {
      c) Go to step 3.
     5) If current is NULL and stack is empty then we are done.
  */
-void iterativeInOrder(struct node* root) {
+void iterativeInorder(struct node* root) {
     stack<struct node*> s;
     struct node* curr = root;
 
