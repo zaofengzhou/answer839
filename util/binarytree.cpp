@@ -124,6 +124,7 @@ void levelOrder(node* root) {
     }
 }
 
+/*
 int main()
 {
     node *root = newNode(1);
@@ -142,4 +143,5 @@ int main()
     iterativePostOrder(root);
     return 0;
 }
+*/
 

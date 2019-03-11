@@ -6,6 +6,20 @@
 #include "bits/stdc++.h"
 using namespace std;
 
+/*
+ * 分别写出用冒泡排序和选择排序对序列[7,3,8,2,9]的每一趟过程
+ * 冒泡排序：
+ * 3,7,2,8,9
+ * 3,2,7,8,9
+ * 2,3,7,8,9
+ * 2,3,7,8,9
+ * 选择排序：
+ * 2,3,8,7,9
+ * 2,3,8,7,9
+ * 2,3,7,8,9
+ * 2,3,7,8,9
+ */
+
 void printArray(int a[], int n) {
     for(int i = 0; i < n; i++) {
         cout << a[i] << " ";
@@ -34,6 +48,26 @@ void insertSort(int a[], int n)
         }
         a[j+1] = temp;  //插入正确位置
         printArray(a, n);
+    }
+}
+
+static void bubbleSort(int a[], int n) {
+    for(int i = n-1; i >= 1; i--) { //n-1趟
+        for(int j = 0; j < i; j++) {
+            if(a[j] > a[j+1])
+                swap(a, j, j+1);
+        }
+    }
+}
+
+static void selectSort(int a[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        int minIdx = i;
+        for (int j = i + 1; j < n; j++) {
+            if (a[j] < a[minIdx])
+                minIdx = j;
+        }
+        swap(a, i, minIdx);
     }
 }
 
@@ -70,7 +104,7 @@ void merge(int a[], int l, int m, int r)
     while(j < n2) {
         a[k++] = R[j++];
     }
-    printArray(a, 5);
+    //printArray(a, 5);
 }
 
 /*
@@ -92,22 +126,25 @@ void mergeSort(int a[], int l, int r)
         mergeSort(a, m+1, r);
 
         merge(a, l, m, r);
+        printArray(a, 4);
     }
 }
 
-/*
 int main()
 {
     //int a[] = {12, 11, 13, 5, 6, 7};
     //int a[] = {38, 27, 43, 3, 9, 82, 10};
-    int a[] = {9, 2, 8, 6, 1};
+    int num;
+    num = 1;
+    int a[] = {6, 2, 9, 8};
     int arr_size = sizeof(a)/sizeof(a[0]);
     printArray(a, arr_size);
-    mergeSort(a, 0, arr_size-1);
-    //printArray(a, arr_size);
+    //mergeSort(a, 0, arr_size-1);
+    //bubbleSort(a, arr_size);
+    selectSort(a, arr_size);
+    printArray(a, arr_size);
     return 0;
 }
-*/
 
 
 
